@@ -1,0 +1,34 @@
+
+
+.table_container{
+    width: 100%;
+    
+
+
+}
+
+.p_id{
+    font-size: 12px;
+    font-weight: 600;
+}
+.p_name{
+    font-size: 14px;
+    font-weight: 600;
+    color: #6c5ce7;
+    cursor: pointer;
+}
+.p_name:hover{
+    color: #636e72;
+}
+.p_price{
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.p_image{
+    margin-right: 10px;
+    width: 48px;
+    height: 45px;
+    object-fit: cover;
+    cursor: pointer;
+}

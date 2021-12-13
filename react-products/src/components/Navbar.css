@@ -1,0 +1,126 @@
+
+.navbar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 5rem;
+    border-bottom: 1.5px solid #f9f9f9;
+    box-shadow:  5px 1px rgba(192, 191, 191, 0.4);
+    
+}
+.navbar_links{
+   display: flex;
+   flex: 1;
+   justify-content: flex-start;
+   align-items: center;
+}   
+
+.navbar_logo {
+    font-weight: bolder;
+    margin-right: 2rem;
+}
+.navbar_logo img{
+    width: 62px;
+    height: 32px;
+}       
+.navbar_links_container{
+    display: flex;
+    flex-direction: row;
+}
+.navbar_links_container p {
+    font-size: 1rem;
+    font-weight: 500;
+    line-height: 2;
+    text-transform: capitalize;
+    color: #636e72;
+    margin-left: 0 1rem;
+    cursor: pointer;
+}
+.navbar_links_container p a{
+    color: #636e72;  
+}
+.navbar_buttons{
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+
+.navbar_buttons  img{
+     width: 32px;
+     height: 32px;
+     border-radius: 50%;
+     cursor: pointer;
+     margin-right: 15px;
+     object-fit: cover;
+}
+.signup{
+    font-size: 16px;
+    color: #636e72;
+    margin:0px 15px;
+}
+.login{
+    font-size: 16px;
+    color: #636e72;
+    margin: 0 15px;
+}
+.logout{
+    margin: 0 20px;
+}
+
+.navbar_menu{
+ margin-left: 1rem;
+ display: none;
+ position: relative;
+
+}
+.navbar_menu svg{
+    cursor: pointer;
+}
+
+.navbar_menu_container{
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+  flex-direction: column;
+  text-align: end;
+  padding: 2rem;
+  position: absolute;
+  top: 2.5rem;
+  right: 0;
+  margin-top: 1rem;
+  min-width: 210px;
+  border-radius: 5px;
+
+}
+
+.navbar_menu_container_links p{
+
+    font-size: 1.2rem;
+    background: rgb(241, 238, 238);
+    width: 150px;
+    height: auto;
+    border-radius: 4px;
+    padding: 0.8rem;
+    margin-left: 2.5rem;
+}
+
+.navbar_buttons_container{
+  display: none;
+}
+
+@media screen and (max-width :1050px) {
+    .navbar_links_container{
+  display: none;
+    }
+
+    .navbar_menu{
+        display: flex;
+
+    }
+
+    .navbar_buttons_contaner button{
+      
+       margin-bottom: 0.5rem;
+    }
+}
