@@ -9,6 +9,7 @@ import Login from './pages/Login/Login';
 import Signup from './pages/Signup/Signup';
 import Pagination from './components/Pagination/Pagination';
 import axios from 'axios';
+import ProtectedRoute from './ProtectedRoute';
 
 
 function App() {
@@ -42,15 +43,22 @@ function App() {
     return ( 
         <div>
         <Router>
-            <>
+        <div className="App">
+            
             <Navbar/>
              <Routes>
-               <Route exact path="/" element={<Home products={currentPost} />} />
+               {/* <Route exact path="/" element={<Home products={currentPost} />} /> */}
+               
+                {/* <ProtectedRoute path="/" element={<Home products={currentPost} />} /> */}
+                
+               <Route path="/" element={<Home products={currentPost}/>}/>
+                 
+              
                <Route path="/signup" element={<Signup />} />
                <Route path="/login" element={<Login />} />
                
             </Routes>
-            </>
+            </div>
             
         </Router>
         <Pagination 

@@ -6,27 +6,34 @@ import jwt from 'jsonwebtoken'
   class UserController {
 
       static register = async (req,res) => {
-          
+           
+             
 
             try {
 
-              const userCheck = await User.findOne({name:req.body.name})
+              const {name, email,password,dob,mobile} = req.body
+
+            //  if(!name || !email || !password || !dob || !mobile){
+            //   res.status(400).json('Please fill all fields')
+              
+            //  }
+              const userCheck = await User.findOne({name})
               if(userCheck){
                 res.status(400).json({success: false, msg: 'User already exist'})
               }
 
               const salt = await bcrypt.genSalt(10)
-              const hashPassword = await bcrypt.hashSync(req.body.password, salt) 
+              const hashPassword = await bcrypt.hashSync(password, salt) 
               const user = await new User({
-                name :req.body.name,
-                email :req.body.email,
+                name : name,
+                email : email,
                 password : hashPassword,
-                dob : req.body.dob,
-                mobile : req.body.mobile,
+                dob :  dob,
+                mobile :  mobile,
               });
 
               await user.save()
-              res.status(200).json({success: true, msg: 'Registration successfull'})
+              return res.status(200).json({success: true, msg: 'Registration successfull'})
               
             } catch (error) {
               res.status(400).json({success: false, msg: 'Oops registration failed'})
@@ -90,19 +97,10 @@ import jwt from 'jsonwebtoken'
               return { status: 'error', error: 'Invalid login' }
             }
           
-            const isPasswordValid = await bcrypt.compare(
-              req.body.password,
-              user.password
-            )
+            const isPasswordValid = await bcrypt.compare(req.body.password,user.password)
           
             if (isPasswordValid) {
-              const token = jwt.sign(
-                {
-                  name: user.name,
-                  email: user.email,
-                },
-                process.env.JWT_SECRET
-              )
+              const token = jwt.sign({id: user._id, name: user.name},process.env.JWT_SECRET,{ expiresIn: "30m" })
           
               return res.json({ status: 'ok',msg:  'Log in successfully', user: token })
             } else {

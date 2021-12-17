@@ -11,6 +11,7 @@ const Signup = () => {
         mobile: ''
     })
     
+    const [isRegistered, setIsRegistered] = useState(false)
     
     const onChangeHandler = (e) =>{
         console.log(e)
@@ -67,6 +68,18 @@ const Signup = () => {
                 </div>
                 
                  <button type="submit" onClick={submitFormHandler}>Signup</button>
+
+                 
+                {isRegistered ? (
+                     <div class="alert alert-success" role="alert">
+                         Registered Successfully..
+                     </div>
+                ) : (
+                     <div class="alert alert-danger" role="alert">
+                        Oops registration failed..
+                     </div>
+                )}
+
             </form>   
 
 

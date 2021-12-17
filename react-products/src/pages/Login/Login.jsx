@@ -2,11 +2,15 @@ import React,{useState,useEffect} from 'react'
 import { FiUser } from 'react-icons/fi'
 import './Login.css'
 import axios from 'axios'
-import {Link} from 'react-router-dom'
+import {Route,Link} from 'react-router-dom'
+import Cookies from 'universal-cookie'
+const cookies = new Cookies()
+
 
 const Login = () => {
       const [email, setEmail] = useState('') 
       const [password, setPassword] = useState('') 
+      const [isLogin, setIsLogin] = useState(false);
 
       const loginHandler =async (e) =>{
           e.preventDefault()
@@ -14,16 +18,25 @@ const Login = () => {
               const user = await axios.post('http://localhost:5000/api/auth/login', {
                   email,password
               })
-               
+                
+              // Getting the cookies
+              cookies.set('TOKEN', user.data.token, {
+                  path: "/"
+              });
+
+               setIsLogin(true)
+
               
               if(user.status === 400 || !user){
                   alert('Invalid credentials..')
               }else{
-                alert('Logged in successfully..')
+                <div class="alert alert-success" role="alert">
+                   Logged in Successfully..
+                </div>
                 window.location.href = '/'
               }
           } catch (error) {
-              console.log(error)
+            error = new Error();
           }
       }
 
@@ -45,6 +58,14 @@ const Login = () => {
                 </div>
                 
                  <button type="submit" onClick={loginHandler}>Login</button>
+
+
+
+                 {isLogin ? (
+                   <p className="text-success text-center p-2">You rre logged in Successfully</p>
+                  ) : (
+                   <p className="text-danger text-center p-2">You are not logged in</p>
+                   )}
             </form>   
 
 

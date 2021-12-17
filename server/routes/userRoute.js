@@ -18,9 +18,8 @@ router.post('/login', UserController.loginUser)
 router.post('/logout', UserController.logout)
 
 
-
 // api/products
-router.get('/products', ProductController.getProducts)
+router.get('/products',ProductController.getProducts)
 
 
 

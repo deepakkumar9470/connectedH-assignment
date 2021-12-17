@@ -1,8 +1,34 @@
-import React from 'react'
+import React,{useState,useEffect} from 'react'
 import './Home.css'
 import {FaRupeeSign} from 'react-icons/fa'
 
+
+import Cookies from "universal-cookie";
+const cookies = new Cookies();
+
 const Home = ({products}) => {
+    const [message, setMessage] = useState("");
+
+
+  //  useEffect(() => {
+  //     const configuration = {
+  //       method: "get",
+  //       url: "http://localhost:5000/api/products",
+  //       headers: {
+  //         Authorization: `Bearer ${token}`,
+  //       },
+
+  //     };
+
+  //     try {
+  //       const res =   axios(configuration)
+  //        setMessage(res.data.msg) 
+  //     } catch (error) {
+  //       error = new Error();   
+  //     }
+
+
+  //  }, [])
 
 
     return (
@@ -37,8 +63,9 @@ const Home = ({products}) => {
                    
                 </tbody>
                 </table>
-               
+
           </div>
+          
     )
 }
 
